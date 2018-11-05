@@ -122,6 +122,7 @@ func InitDB() (*gorm.DB, error) {
 	if err == nil {
 		DB = db
 		db.LogMode(true) //开启日志打印
+		db.Set("gorm:table_options", "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci")
 		db.AutoMigrate(&Page{}, &Post{}, &Tag{}, &PostTag{}, &User{}, &Comment{}, &Subscriber{}, &Link{}) //自动创建所有表
 		db.Model(&PostTag{}).AddUniqueIndex("uk_post_tag", "post_id", "tag_id") //给表添加唯一索引（组合索引）
 		return db, err
