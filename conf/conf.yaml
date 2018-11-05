@@ -1,0 +1,24 @@
+signup_enabled: false
+qiniu_accesskey: 0SBN984kiJOJroBH2AntMfMMBvsuPs45vl7Vv4ZG
+qiniu_secretkey: H9cVXkTtCL-FFlyLihqNhU9Hp_gNpPYFMjvDZyUn
+qiniu_fileserver: idv093d.qiniudns.com
+qiniu_bucket: yq-studio
+github_clientid: 6a5e537337d35b861ecd
+github_clientsecret: 68dc11932ca44c6a6411277680d333da9c0c650b
+github_authurl: https://github.com/login/oauth/authorize?client_id=%s&scope=user:email&state=%s
+# 与github配置的回调地址一致
+github_redirecturl: http://39.107.77.94:8090/oauth2callback
+github_tokenurl: https://github.com/login/oauth/access_token
+github_scope:
+smtp_username: 1225807604@qq.com
+smtp_password: yang15501707783
+smtp_host: smtp.qq.com:465
+redis_host: 39.107.77.94:6379
+session_secret: YqStudio
+domain:
+public: static
+addr: :8090
+backup_key:
+dsn: root:123456@tcp(39.107.77.94:3306)/YqStudio?charset=utf8&parseTime=True&loc=Local
+#dsn: root:mysql@/wblog?charset=utf8&parseTime=True&loc=Asia/Shanghai
+notify_emails:
