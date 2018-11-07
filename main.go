@@ -177,11 +177,11 @@ func main() {
 		authorized.POST("/new_batchmail", controllers.SendBatchMail) //批量向订阅者发送邮件
 	}
 	//启动web服务
-	router.Run(system.GetConfiguration().Addr)
+	//router.Run(system.GetConfiguration().Addr)
 	//开启HTTPS
-	//var serverCrt string = filepath.Join(getCurrentDirectory(), "./static/tls/server.crt")
-	//var serverKey string = filepath.Join(getCurrentDirectory(), "./static/tls/server.key")
-	//router.RunTLS(system.GetConfiguration().Addr, serverCrt, serverKey)
+	var serverCrt  = filepath.Join(getCurrentDirectory(), "./static/tls/server.crt")
+	var serverKey  = filepath.Join(getCurrentDirectory(), "./static/tls/server.key")
+	router.RunTLS(system.GetConfiguration().Addr, serverCrt, serverKey)
 }
 
 func setTemplate(engine *gin.Engine) {
