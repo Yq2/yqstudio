@@ -177,11 +177,11 @@ func main() {
 		authorized.POST("/new_batchmail", controllers.SendBatchMail) //批量向订阅者发送邮件
 	}
 	//启动web服务
-	//router.Run(system.GetConfiguration().Addr)
+	router.Run(system.GetConfiguration().Addr)
 	//开启HTTPS
-	var serverCrt  = filepath.Join(getCurrentDirectory(), "./static/tls/server.crt")
-	var serverKey  = filepath.Join(getCurrentDirectory(), "./static/tls/server.key")
-	router.RunTLS(system.GetConfiguration().Addr, serverCrt, serverKey)
+	//var serverCrt  = filepath.Join(getCurrentDirectory(), "./static/tls/server.crt")
+	//var serverKey  = filepath.Join(getCurrentDirectory(), "./static/tls/server.key")
+	//router.RunTLS(system.GetConfiguration().Addr, serverCrt, serverKey)
 }
 
 func setTemplate(engine *gin.Engine) {
@@ -210,14 +210,6 @@ func setSessions(router *gin.Engine) {
 	store.Options(sessions.Options{HttpOnly: true, MaxAge: 7 * 86400, Path: "/"}) //Also set Secure: true if using SSL, you should though
 	//当前引擎使用session 名字为gin-session
 	router.Use(sessions.Sessions("gin-session", store))
-	//https://github.com/utrack/gin-csrf
-	/*router.Use(csrf.Middleware(csrf.Options{
-		Secret: config.SessionSecret,
-		ErrorFunc: func(c *gin.Context) {
-			c.String(400, "CSRF token mismatch")
-			c.Abort()
-		},
-	}))*/
 }
 
 //+++++++++++++ middlewares +++++++++++++++++++++++
